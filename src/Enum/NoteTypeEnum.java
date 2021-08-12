@@ -1,6 +1,6 @@
 package Enum;
 
-public enum NoteType {
+public enum NoteTypeEnum {
     // Author: Robin Steinwarz
     info,
     fail,

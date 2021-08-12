@@ -1,6 +1,6 @@
 package Enum;
 
-public enum Status {
+public enum StatusEnum {
     // Author: Robin Steinwarz
     todo,
     progress,

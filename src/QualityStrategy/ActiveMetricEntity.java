@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class ActiveMetricEntity {
     // Author: Robin Steinwarz
-    List<QualityStrategy> qualities = new ArrayList<>();
+    List<QualityStrategyInterface> qualities = new ArrayList<>();
 
     private static ActiveMetricEntity instance;
 
@@ -25,7 +25,7 @@ public class ActiveMetricEntity {
         return instance;
     }
 
-    public void setQualityStrategy(List<QualityStrategy> strategy){
+    public void setQualityStrategy(List<QualityStrategyInterface> strategy){
         qualities = strategy;
     }
 

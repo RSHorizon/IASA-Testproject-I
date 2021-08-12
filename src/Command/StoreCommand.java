@@ -1,6 +1,6 @@
 package Command;
 
-import Enum.NoteType;
+import Enum.NoteTypeEnum;
 import Model.Persistance.ContainerEntity;
 import Model.Persistance.ContainerAccess;
 import View.NotificationView;
@@ -11,15 +11,15 @@ public class StoreCommand extends AbstractCommand {
     public void execute(String parameter) {
 
         if(parameter.trim() != "" && !parameter.contains("\"")){
-            NotificationView.notify(NoteType.fail,"No file path was submitted as parameter");
-            NotificationView.notify(NoteType.info,"Please use the following format: store \"\'filepath\'\"");
-            NotificationView.notify(NoteType.info,"It seems like you don't use \" when using the command");
+            NotificationView.notify(NoteTypeEnum.fail,"No file path was submitted as parameter");
+            NotificationView.notify(NoteTypeEnum.info,"Please use the following format: store \"\'filepath\'\"");
+            NotificationView.notify(NoteTypeEnum.info,"It seems like you don't use \" when using the command");
             return;
         }
 
         if(parameter.trim() == ""){
-            NotificationView.notify(NoteType.fail,"No file path was submitted as parameter");
-            NotificationView.notify(NoteType.info,"Please use the following format: store \"\'filepath\'\"");
+            NotificationView.notify(NoteTypeEnum.fail,"No file path was submitted as parameter");
+            NotificationView.notify(NoteTypeEnum.info,"Please use the following format: store \"\'filepath\'\"");
             return;
         }
 

@@ -4,7 +4,7 @@ import QualityStrategy.ActiveMetricEntity;
 import QualityStrategy.QualityConfig;
 import Model.Entity.QualityResultEntity;
 import Model.Entity.UserStoryEntity;
-import Enum.NoteType;
+import Enum.NoteTypeEnum;
 import Model.Persistance.ContainerEntity;
 import View.NotificationView;
 import Exception.ContainerException;
@@ -40,8 +40,8 @@ public class AnalyzeCommand extends AbstractCommand {
                 try {
                     id = Integer.parseInt(parameters[0]);
                 } catch (NumberFormatException e) {
-                    NotificationView.notify(NoteType.fail, "The format for id is wrong");
-                    NotificationView.notify(NoteType.info, "Please use a valid id number like 0,1,73,9999.");
+                    NotificationView.notify(NoteTypeEnum.fail, "The format for id is wrong");
+                    NotificationView.notify(NoteTypeEnum.info, "Please use a valid id number like 0,1,73,9999.");
                     return;
                 }
 
@@ -64,10 +64,10 @@ public class AnalyzeCommand extends AbstractCommand {
             }
         }
 
-        NotificationView.notify(NoteType.fail,"The given parameter list did not match for a UserStory creation");
-        NotificationView.notify(NoteType.info,"Please use one of the following formats:");
-        NotificationView.notify(NoteType.info,"analyze UserStoryID [-details|-hints]");
-        NotificationView.notify(NoteType.info,"analyze -all");
+        NotificationView.notify(NoteTypeEnum.fail,"The given parameter list did not match for a UserStory creation");
+        NotificationView.notify(NoteTypeEnum.info,"Please use one of the following formats:");
+        NotificationView.notify(NoteTypeEnum.info,"analyze UserStoryID [-details|-hints]");
+        NotificationView.notify(NoteTypeEnum.info,"analyze -all");
     }
 
     private void analyzeAll(){

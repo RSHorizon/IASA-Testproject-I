@@ -4,8 +4,8 @@ import java.lang.reflect.*;
 
 import Command.AbstractCommand;
 import Command.CommandHistory;
-import Enum.NoteType;
-import Enum.ViableCommands;
+import Enum.NoteTypeEnum;
+import Enum.ViableCommandsEnum;
 import View.NotificationView;
 
 public class CommandController {
@@ -14,7 +14,7 @@ public class CommandController {
     public void executeLine(String line) {
 
         if(line == null){
-            NotificationView.notify(NoteType.fail, "No Command was passed");
+            NotificationView.notify(NoteTypeEnum.fail, "No Command was passed");
             return;
         }
 
@@ -25,7 +25,7 @@ public class CommandController {
         String parameters = String.join(" ", splitted).trim();
 
         // überprüfe ob der befehl bekannt ist
-        ViableCommands[] commands = ViableCommands.values();
+        ViableCommandsEnum[] commands = ViableCommandsEnum.values();
         for( int i = 0; i < commands.length; i++){
             if(head.equals(commands[i].toString())){
                 // bekannt
@@ -50,6 +50,6 @@ public class CommandController {
         }
 
         // nicht bekannt
-        NotificationView.notify(NoteType.fail,"Command could not be found, please try again. (enter 'help' for a command list)");
+        NotificationView.notify(NoteTypeEnum.fail,"Command could not be found, please try again. (enter 'help' for a command list)");
     }
 }

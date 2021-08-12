@@ -1,6 +1,6 @@
 package Command;
 
-public interface Command {
+public interface CommandInterface {
     // Author: Robin Steinwarz
     void execute(String parameter);
     void inverse();

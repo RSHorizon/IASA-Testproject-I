@@ -1,6 +1,6 @@
 package Command;
 
-import Enum.NoteType;
+import Enum.NoteTypeEnum;
 import View.NotificationView;
 
 public class UndoCommand extends AbstractCommand {
@@ -11,7 +11,7 @@ public class UndoCommand extends AbstractCommand {
         AbstractCommand command = CommandHistory.getInstance().pop();
 
         if(command == null){
-            NotificationView.notify(NoteType.info, "Nothing to undo");
+            NotificationView.notify(NoteTypeEnum.info, "Nothing to undo");
         }else{
             command.inverse();
         }

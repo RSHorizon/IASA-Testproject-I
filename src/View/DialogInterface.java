@@ -4,7 +4,7 @@ import DTO.UserStoryDTO;
 
 import java.util.List;
 
-public interface IDialog {
+public interface DialogInterface {
     // Author: Robin Steinwarz
     void display(List<UserStoryDTO> stories);
 }

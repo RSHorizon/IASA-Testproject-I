@@ -10,7 +10,7 @@ public class QualityConfig {
     }
 
     private void setMetricUp(){
-        List<QualityStrategy> qualities = new ArrayList<>();
+        List<QualityStrategyInterface> qualities = new ArrayList<>();
         qualities.add(new WrittenValueIsDefinedQualityStrategy());
         qualities.add(new ActorIsDefinedQualityStrategy());
         qualities.add(new FunctionalityIsDefinedQualityStrategy());

@@ -3,7 +3,7 @@ package Model.Persistance;
 import DTO.UserStoryDTO;
 import Model.Entity.ActorEntity;
 import Model.Entity.UserStoryEntity;
-import Enum.NoteType;
+import Enum.NoteTypeEnum;
 import Exception.ContainerException;
 import View.NotificationView;
 
@@ -60,7 +60,7 @@ public class ContainerEntity implements Serializable {
             }
         }
 
-        NotificationView.notify(NoteType.info, "The UserStory with the id: \"+id+\" did not exist and could not be deleted");
+        NotificationView.notify(NoteTypeEnum.info, "The UserStory with the id: \"+id+\" did not exist and could not be deleted");
     }
 
     public void addActor(ActorEntity actor){

@@ -4,7 +4,7 @@ import DTO.UserStoryDTO;
 
 import java.util.List;
 
-public class DumpDialogView implements IDialog {
+public class DumpDialogView implements DialogInterface {
     // Author: Robin Steinwarz
     @Override
     public void display(List<UserStoryDTO> stories) {

@@ -1,8 +1,8 @@
 package Command;
 
 import DTO.UserStoryDTO;
-import Enum.NoteType;
-import Enum.Status;
+import Enum.NoteTypeEnum;
+import Enum.StatusEnum;
 import Model.Persistance.ContainerEntity;
 import View.NotificationView;
 import View.SortedDumpDialogView;
@@ -20,12 +20,12 @@ public class DumpCommand extends AbstractCommand {
 
         if(parameters.length > 0 && parameters[0].equals("-status")){
             if(parameters.length == 1){
-                NotificationView.notify(NoteType.fail, "Format for dump is wrong.");
-                NotificationView.notify(NoteType.info, "Please use the following format: dump [-status \'Status\']");
+                NotificationView.notify(NoteTypeEnum.fail, "Format for dump is wrong.");
+                NotificationView.notify(NoteTypeEnum.info, "Please use the following format: dump [-status \'Status\']");
                 return;
             }
 
-            Status status = Status.valueOf(parameters[1]);
+            StatusEnum status = StatusEnum.valueOf(parameters[1]);
 
             stories = stories.stream().filter(c -> c.getStatus() == status).collect(Collectors.toList());
         }

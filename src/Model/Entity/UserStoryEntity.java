@@ -1,6 +1,6 @@
 package Model.Entity;
 
-import Enum.Status;
+import Enum.StatusEnum;
 import java.io.Serializable;
 
 public class UserStoryEntity implements Comparable<UserStoryEntity>, Serializable {
@@ -12,7 +12,7 @@ public class UserStoryEntity implements Comparable<UserStoryEntity>, Serializabl
     private int penalty;
     private int effort;
     private double priority;
-    private Status status;
+    private StatusEnum status;
 
     public UserStoryEntity(int id, String title, int risk, int value, int penalty, int effort){
         this.id = id;
@@ -25,7 +25,7 @@ public class UserStoryEntity implements Comparable<UserStoryEntity>, Serializabl
         priority = calculatePriority();
     }
 
-    public void setStatus(Status status){
+    public void setStatus(StatusEnum status){
         this.status = status;
     }
 
@@ -99,7 +99,7 @@ public class UserStoryEntity implements Comparable<UserStoryEntity>, Serializabl
         priority = calculatePriority();
     }
 
-    public Status getStatus() {
+    public StatusEnum getStatus() {
         return status;
     }
 

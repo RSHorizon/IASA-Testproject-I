@@ -1,6 +1,6 @@
 package Enum;
 
-public enum ViableCommands {
+public enum ViableCommandsEnum {
     // Author: Robin Steinwarz
     addElement,
     actors,

@@ -1,6 +1,6 @@
 package Model.Persistance;
 
-import Enum.NoteType;
+import Enum.NoteTypeEnum;
 import View.NotificationView;
 
 import java.io.*;
@@ -19,10 +19,10 @@ public class ContainerAccess {
 
             container = inputStream.readObject();
         }catch(IOException e){
-            NotificationView.notify(NoteType.fail, "Failed to load Container");
+            NotificationView.notify(NoteTypeEnum.fail, "Failed to load Container");
             return null;
         }catch( ClassNotFoundException e){
-            NotificationView.notify(NoteType.fail, "Pfad wurde nicht gefunden");
+            NotificationView.notify(NoteTypeEnum.fail, "Pfad wurde nicht gefunden");
             return null;
         }finally {
             if (fileInput != null) try {
@@ -50,7 +50,7 @@ public class ContainerAccess {
 
             outputStream.writeObject(container);
         }catch(IOException e){
-            NotificationView.notify(NoteType.fail, "Failed to store Container");
+            NotificationView.notify(NoteTypeEnum.fail, "Failed to store Container");
             return;
         }finally {
             if (fileOutput != null) try {

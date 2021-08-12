@@ -1,6 +1,6 @@
 package Command;
 
-public abstract class AbstractCommand implements Command {
+public abstract class AbstractCommand implements CommandInterface {
     // Author: Robin Steinwarz
     protected boolean undoable = false;
 

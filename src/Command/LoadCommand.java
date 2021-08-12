@@ -1,6 +1,6 @@
 package Command;
 
-import Enum.NoteType;
+import Enum.NoteTypeEnum;
 import Model.Persistance.ContainerEntity;
 import Model.Persistance.ContainerAccess;
 import View.ConsoleView;
@@ -12,26 +12,26 @@ public class LoadCommand extends AbstractCommand {
     public void execute(String parameter) {
 
         if(parameter.trim() != "" && !parameter.contains("\"")){
-            NotificationView.notify(NoteType.fail,"No file path was submitted as parameter");
-            NotificationView.notify(NoteType.info,"Please use the following format: load \"filepath\"");
-            NotificationView.notify(NoteType.info,"It seems like you don't use \" when using the command.");
+            NotificationView.notify(NoteTypeEnum.fail,"No file path was submitted as parameter");
+            NotificationView.notify(NoteTypeEnum.info,"Please use the following format: load \"filepath\"");
+            NotificationView.notify(NoteTypeEnum.info,"It seems like you don't use \" when using the command.");
             return;
         }
 
         if(parameter.trim() == ""){
-            NotificationView.notify(NoteType.fail,"No file path was submitted as parameter");
-            NotificationView.notify(NoteType.info,"Please use the following format: load \"\'filepath\'\"");
+            NotificationView.notify(NoteTypeEnum.fail,"No file path was submitted as parameter");
+            NotificationView.notify(NoteTypeEnum.info,"Please use the following format: load \"\'filepath\'\"");
             return;
         }
 
-        NotificationView.notify(NoteType.command,"Are you sure to load a saved container? Current unsaved UserStories will be overwritten");
-        NotificationView.notify(NoteType.command,"Please type y to continue, or anything else to abort");
+        NotificationView.notify(NoteTypeEnum.command,"Are you sure to load a saved container? Current unsaved UserStories will be overwritten");
+        NotificationView.notify(NoteTypeEnum.command,"Please type y to continue, or anything else to abort");
 
         ConsoleView console = new ConsoleView();
         String answere = console.readLine();
 
         if(!answere.equals("y")){
-            NotificationView.notify(NoteType.info, "Abort");
+            NotificationView.notify(NoteTypeEnum.info, "Abort");
             return;
         }
 
@@ -40,12 +40,12 @@ public class LoadCommand extends AbstractCommand {
         ContainerEntity loaded = ContainerAccess.load(file);
 
         if(loaded == null){
-            NotificationView.notify(NoteType.fail,"The requested container path does not exist");
+            NotificationView.notify(NoteTypeEnum.fail,"The requested container path does not exist");
             return;
         }
 
         ContainerEntity.getContainer().setContainer(loaded);
-        NotificationView.notify(NoteType.info,"Container successfully loaded");
+        NotificationView.notify(NoteTypeEnum.info,"Container successfully loaded");
     }
 
     @Override

@@ -1,6 +1,6 @@
 package QualityStrategy;
 
-public abstract class AbstractQualityStrategy implements QualityStrategy{
+public abstract class AbstractQualityStrategy implements QualityStrategyInterface {
     // Author: Robin Steinwarz
     protected double qualityDeduction;
 

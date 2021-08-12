@@ -1,6 +1,6 @@
 package Command;
 
-import Enum.NoteType;
+import Enum.NoteTypeEnum;
 import Model.Persistance.ContainerEntity;
 import Model.Entity.UserStoryEntity;
 import Exception.ContainerException;
@@ -19,10 +19,10 @@ public class EnterCommand extends AbstractCommand {
     public void execute(String parameter) {
 
         if(parameter.trim() != "" && !parameter.contains("\"")){
-            NotificationView.notify(NoteType.fail,"The given parameter list did not match for a user story creation");
-            NotificationView.notify(NoteType.info,"Please use the following format: enter \'UserStoryID\' \"\'short description\'\" \'risk\' \'value\' \'penalty\' \'effort\'");
-            NotificationView.notify(NoteType.info, "Als \'Akteur\' [mit der Rolle \'Rolle\'] möchte ich \'Story\'[, um|damit \'Mehrwert\']");
-            NotificationView.notify(NoteType.info,"Use the characters \" in \"short description\" otherwise your command won't be executed properly");
+            NotificationView.notify(NoteTypeEnum.fail,"The given parameter list did not match for a user story creation");
+            NotificationView.notify(NoteTypeEnum.info,"Please use the following format: enter \'UserStoryID\' \"\'short description\'\" \'risk\' \'value\' \'penalty\' \'effort\'");
+            NotificationView.notify(NoteTypeEnum.info, "Als \'Akteur\' [mit der Rolle \'Rolle\'] möchte ich \'Story\'[, um|damit \'Mehrwert\']");
+            NotificationView.notify(NoteTypeEnum.info,"Use the characters \" in \"short description\" otherwise your command won't be executed properly");
             return;
         }
 
@@ -30,9 +30,9 @@ public class EnterCommand extends AbstractCommand {
 
         if(parameters.length != 3 || parameters[0].trim().equals("")){
 
-            NotificationView.notify(NoteType.fail,"The given parameter list did not match for a user story creation");
-            NotificationView.notify(NoteType.info,"Please use the following format: enter \'UserStoryID\' \"\'short description\'\" \'risk\' \'value\' \'penalty\' \'effort\'");
-            NotificationView.notify(NoteType.info, "Als \'Akteur\' [mit der Rolle \'Rolle\'] möchte ich \'Story\'[, um|damit \'Mehrwert\']");
+            NotificationView.notify(NoteTypeEnum.fail,"The given parameter list did not match for a user story creation");
+            NotificationView.notify(NoteTypeEnum.info,"Please use the following format: enter \'UserStoryID\' \"\'short description\'\" \'risk\' \'value\' \'penalty\' \'effort\'");
+            NotificationView.notify(NoteTypeEnum.info, "Als \'Akteur\' [mit der Rolle \'Rolle\'] möchte ich \'Story\'[, um|damit \'Mehrwert\']");
             return;
         }
 
@@ -43,9 +43,9 @@ public class EnterCommand extends AbstractCommand {
         String[] gloeger = parameters[2].split(" ");
 
         if(gloeger.length != 4){
-            NotificationView.notify(NoteType.fail,"The given parameter list did not match for a user story creation");
-            NotificationView.notify(NoteType.info,"Please use the following format: enter \'UserStoryID\' \"\'short description\'\" \'risk\' \'value\' \'penalty\' \'effort\'");
-            NotificationView.notify(NoteType.info, "Als \'Akteur\' [mit der Rolle \'Rolle\'] möchte ich \'Story\'[, um|damit \'Mehrwert\']");
+            NotificationView.notify(NoteTypeEnum.fail,"The given parameter list did not match for a user story creation");
+            NotificationView.notify(NoteTypeEnum.info,"Please use the following format: enter \'UserStoryID\' \"\'short description\'\" \'risk\' \'value\' \'penalty\' \'effort\'");
+            NotificationView.notify(NoteTypeEnum.info, "Als \'Akteur\' [mit der Rolle \'Rolle\'] möchte ich \'Story\'[, um|damit \'Mehrwert\']");
             return;
         }
 
@@ -63,20 +63,20 @@ public class EnterCommand extends AbstractCommand {
             penalty = Integer.parseInt(gloeger[2]);
             effort = Integer.parseInt(gloeger[3]);
         }catch(NumberFormatException e){
-            NotificationView.notify(NoteType.fail,"The format for id or risk or penalty or value or effort is wrong");
-            NotificationView.notify(NoteType.info,"Please use valid numbers like 0,1,73,9999. (MaxNumber: 2147483647)");
+            NotificationView.notify(NoteTypeEnum.fail,"The format for id or risk or penalty or value or effort is wrong");
+            NotificationView.notify(NoteTypeEnum.info,"Please use valid numbers like 0,1,73,9999. (MaxNumber: 2147483647)");
             return;
         }
 
         if(id < 0){
-            NotificationView.notify(NoteType.fail,"The format for id is wrong");
-            NotificationView.notify(NoteType.info,"Please make sure that the id number is not negative");
+            NotificationView.notify(NoteTypeEnum.fail,"The format for id is wrong");
+            NotificationView.notify(NoteTypeEnum.info,"Please make sure that the id number is not negative");
             return;
         }
 
         if(risk < 1 || penalty < 1 || value < 1 || risk > 5 || penalty > 5 || value > 5){
-            NotificationView.notify(NoteType.fail,"The format for risk|penalty|value is wrong");
-            NotificationView.notify(NoteType.info,"Please use the following format: 1-5");
+            NotificationView.notify(NoteTypeEnum.fail,"The format for risk|penalty|value is wrong");
+            NotificationView.notify(NoteTypeEnum.info,"Please use the following format: 1-5");
             return;
         }
 
@@ -89,8 +89,8 @@ public class EnterCommand extends AbstractCommand {
         }
 
         if(!effortPossible){
-            NotificationView.notify(NoteType.fail,"The effort you entered did not match the possible values");
-            NotificationView.notify(NoteType.info,"Please pick on of these: 0, 1, 2, 3, 5, 8, 13, 20, 40, 100");
+            NotificationView.notify(NoteTypeEnum.fail,"The effort you entered did not match the possible values");
+            NotificationView.notify(NoteTypeEnum.info,"Please pick on of these: 0, 1, 2, 3, 5, 8, 13, 20, 40, 100");
             return;
         }
 
@@ -102,8 +102,8 @@ public class EnterCommand extends AbstractCommand {
             return;
         }
 
-        NotificationView.notify(NoteType.info,"Successfully created UserStory");
-        NotificationView.notify(NoteType.info, newStory.toString());
+        NotificationView.notify(NoteTypeEnum.info,"Successfully created UserStory");
+        NotificationView.notify(NoteTypeEnum.info, newStory.toString());
 
         addedID = id;
     }

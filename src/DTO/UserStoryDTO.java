@@ -1,7 +1,7 @@
 package DTO;
 
 import Model.Entity.UserStoryEntity;
-import Enum.Status;
+import Enum.StatusEnum;
 
 public class UserStoryDTO implements Comparable<UserStoryDTO>{
     // Author: Robin Steinwarz
@@ -9,7 +9,7 @@ public class UserStoryDTO implements Comparable<UserStoryDTO>{
     private int id;
     private String title;
     private double priority;
-    private Status status;
+    private StatusEnum status;
 
     public UserStoryDTO(UserStoryEntity story){
         id = story.getID();
@@ -66,11 +66,11 @@ public class UserStoryDTO implements Comparable<UserStoryDTO>{
         this.priority = priority;
     }
 
-    public Status getStatus() {
+    public StatusEnum getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(StatusEnum status) {
         this.status = status;
     }
 }

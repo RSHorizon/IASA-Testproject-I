@@ -1,7 +1,7 @@
 package Command;
 
 import Model.Entity.ActorEntity;
-import Enum.NoteType;
+import Enum.NoteTypeEnum;
 import Model.Persistance.ContainerEntity;
 import View.NotificationView;
 
@@ -12,7 +12,7 @@ public class ActorsCommand extends AbstractCommand {
     @Override
     public void execute(String parameter) {
         if(!parameter.equals("")){
-            NotificationView.notify(NoteType.info, "The command actors has no parameters");
+            NotificationView.notify(NoteTypeEnum.info, "The command actors has no parameters");
         }
 
         List<ActorEntity> actors = ContainerEntity.getContainer().getActors();
